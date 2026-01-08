@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from sentiment import run_sentiment_model
+from Sentiment import run_sentiment_model
 
 app = FastAPI()
 
