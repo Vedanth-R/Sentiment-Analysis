@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Sentiment Demo</title>
+  <style>
+    body { font-family: Arial; max-width: 700px; margin: auto; }
+    input, button { padding: 8px; }
+    section { margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+<h1>📊 Stock Sentiment Analysis</h1>
+
+<section>
+  <h2>Try It</h2>
+  <input id="ticker" placeholder="AAPL">
+  <button onclick="analyze()">Analyze</button>
+  <p id="result"></p>
+</section>
+
+<section>
+  <h2>What Does This Mean?</h2>
+  <p>
+    The sentiment score ranges from -1 (negative) to +1 (positive)
+    and reflects the tone of recent news headlines.
+  </p>
+</section>
+
+<section>
+  <h2>How It Works</h2>
+  <p>
+    Headlines are scraped from Finviz and analyzed using VADER,
+    a natural language processing model designed for short text.
+  </p>
+</section>
+
+<script>
+async function analyze() {
+  const ticker = document.getElementById("ticker").value;
+  const result = document.getElementById("result");
+
+  result.innerText = "Analyzing...";
+
+  const response = await fetch("http://localhost:8000/sentiment", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ticker })
+  });
+
+  const data = await response.json();
+
+  if (data.error) {
+    result.innerText = data.error;
+  } else {
+    result.innerText =
+      `Sentiment score for ${data.ticker}: ${data.score} (${data.label})`;
+  }
+}
+</script>
+
+</body>
+</html>
