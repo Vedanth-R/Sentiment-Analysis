@@ -23,10 +23,10 @@ The website then displays:
 It measures language tone, not future returns.
 
 # Sentiment Score Meaning
-Score Range	Interpretation
-+1.0	Strongly positive sentiment
-0.0	Mixed or neutral sentiment
-−1.0	Strongly negative sentiment
+Score Range	Interpretation:
+- +1.0	Strongly positive sentiment
+- 0.0	Mixed or neutral sentiment
+- −1.0	Strongly negative sentiment
 
 # Project Structure
 sentiment_demo/
@@ -37,20 +37,15 @@ sentiment_demo/
 
 # How to Run Locally
 1. Install Dependencies
-pip install fastapi uvicorn requests beautifulsoup4 vaderSentiment lxml
+- pip install fastapi uvicorn requests beautifulsoup4 vaderSentiment lxml
 
 2. Start the Server
-From inside the project folder:
-uvicorn main:app --reload
-You should see:
-Uvicorn running on http://127.0.0.1:8000
-Leave this terminal running.
+- From inside the project folder: uvicorn main:app --reload
+- You should see: Uvicorn running on http://127.0.0.1:8000
+- Leave this terminal running.
 
 3. Open the Website
-Open index.html in your browser (double-click or right-click → open with browser).
+- Open index.html in your browser (double-click or right-click → open with browser).
 
 4. Try It Out
-Enter a ticker like:
-AAPL
-MSFT
-Click Analyze to see the sentiment score.
+- Enter a ticker like AAPL or MSFT and click Analyze to see the sentiment score.
